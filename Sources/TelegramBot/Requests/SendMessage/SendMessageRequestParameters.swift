@@ -17,7 +17,9 @@ public struct SendMessageRequestParameters: Content {
     
     // MARK: - Init
     
-    public init(chatId: Int, text: String) {
+    public init(chatId: Int, 
+                text: String) {
+        
         self.chatId = chatId
         self.text = text
     }

@@ -11,7 +11,7 @@ public struct Configuration {
     
     // MARK: - Properties
     
-    var token: String
+    let token: String
     
     // MARK: - Init
     

@@ -11,8 +11,10 @@ public final class Response<Result: Content>: Content {
     
     public let ok: Bool
     
+    public let result: Result?
+    
     public let description: String?
     
-    public let result: Result
+    public let parameters: Response.Parameters?
     
 }
