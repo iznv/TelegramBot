@@ -8,10 +8,10 @@
 import Vapor
 
 public struct TelegramBot {
+    
+    let application: Application
 
     let client: Client
-    
-    let token: String
 
 }
 
@@ -31,7 +31,7 @@ public extension TelegramBot {
     func make<Response: Content>(_ request: Request<Response>) async throws -> Response {
         let uri = URI(scheme: "https",
                       host: "api.telegram.org",
-                      path: "/bot\(token)/\(request.path)")
+                      path: "/bot\(configuration.token)/\(request.path)")
         
         let clientResponse = try await client.post(uri, content: request.parameters)
         
@@ -40,13 +40,22 @@ public extension TelegramBot {
     
 }
 
-// MARK: - Request Extension
+// MARK: - Extensions
+
+public extension Application {
+    
+    var telegramBot: TelegramBot {
+        .init(application: self,
+              client: client)
+    }
+
+}
 
 public extension Request {
     
     var telegramBot: TelegramBot {
-        .init(client: self.client,
-              token: self.application.telegramBotConfiguration.token)
+        .init(application: application,
+              client: client)
     }
 
 }
