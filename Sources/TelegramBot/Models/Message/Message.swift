@@ -19,6 +19,8 @@ public struct Message: Content {
     
     public let text: String?
     
+    public let sticker: Sticker?
+    
     public let entities: [Entity]?
     
 }
@@ -38,6 +40,8 @@ extension Message {
         case date
         
         case text
+        
+        case sticker
         
         case entities
         

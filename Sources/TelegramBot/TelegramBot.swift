@@ -29,15 +29,19 @@ public extension TelegramBot {
     
     @discardableResult
     func make<Response: Content>(_ request: Request<Response>) async throws -> Response {
-        let uri = URI(scheme: "https",
-                      host: "api.telegram.org",
-                      path: "/bot\(configuration.token)/\(request.path)")
+        let uri = telegramApiUri(path: "/bot\(configuration.token)/\(request.path)")
         
         let clientResponse = try await client.post(uri, content: request.parameters)
         
-        try? application.logger.log(path: request.path, response: clientResponse)
+        try? application.logger.log(title: "Response",
+                                    path: "/\(request.path)",
+                                    data: clientResponse.body)
             
         return try clientResponse.content.decode(Response.self)
+    }
+    
+    func downloadUri(filePath: String) -> URI {
+        return telegramApiUri(path: "/file/bot\(configuration.token)/\(filePath)")
     }
     
 }
@@ -60,4 +64,16 @@ public extension Request {
               client: client)
     }
 
+}
+
+// MARK: - Private
+
+private extension TelegramBot {
+    
+    func telegramApiUri(path: String) -> URI {
+        return URI(scheme: "https",
+                   host: "api.telegram.org",
+                   path: path)
+    }
+    
 }
