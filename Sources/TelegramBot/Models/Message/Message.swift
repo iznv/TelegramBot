@@ -48,3 +48,13 @@ extension Message {
     }
     
 }
+
+// MARK: - Extensions
+
+public extension Message {
+    
+    func text(for entity: Entity) -> String? {
+        return text?.substring(with: entity.range)
+    }
+    
+}

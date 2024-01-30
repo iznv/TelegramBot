@@ -15,7 +15,7 @@ public struct SendDocumentRequestParameters: Content {
     
     public let chatId: Int
     
-    public let document: File
+    public let document: Document
     
     public let disableContentTypeDetection: Bool
     
@@ -24,7 +24,7 @@ public struct SendDocumentRequestParameters: Content {
     // MARK: - Init
     
     public init(chatId: Int,
-                document: File,
+                document: Document,
                 disableContentTypeDetection: Bool = true,
                 caption: String? = nil) {
         
@@ -44,7 +44,7 @@ extension SendDocumentRequestParameters {
         
         case chatId = "chat_id"
         
-        case document = "document"
+        case document
         
         case disableContentTypeDetection = "disable_content_type_detection"
         

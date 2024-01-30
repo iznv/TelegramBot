@@ -15,13 +15,17 @@ public struct SendMessageRequestParameters: Content {
     
     public let text: String
     
+    public let replyMarkup: ReplyMarkup?
+    
     // MARK: - Init
     
     public init(chatId: Int, 
-                text: String) {
+                text: String,
+                replyMarkup: ReplyMarkup? = nil) {
         
         self.chatId = chatId
         self.text = text
+        self.replyMarkup = replyMarkup
     }
     
 }
@@ -35,6 +39,8 @@ extension SendMessageRequestParameters {
         case chatId = "chat_id"
         
         case text
+        
+        case replyMarkup = "reply_markup"
         
     }
     

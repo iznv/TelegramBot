@@ -31,6 +31,10 @@ public extension TelegramBot {
     func make<Response: Content>(_ request: Request<Response>) async throws -> Response {
         let uri = telegramApiUri(path: "/bot\(configuration.token)/\(request.path)")
         
+        try? application.logger.log(title: "Request",
+                                    path: "/\(request.path)",
+                                    content: request.parameters)
+        
         let clientResponse = try await client.post(uri, content: request.parameters)
         
         try? application.logger.log(title: "Response",

@@ -13,6 +13,8 @@ public struct Update: Content {
     
     public let message: Message?
     
+    public let callbackQuery: CallbackQuery?
+    
 }
 
 // MARK: - CodingKeys
@@ -24,6 +26,8 @@ extension Update {
         case id = "update_id"
         
         case message
+        
+        case callbackQuery = "callback_query"
         
     }
     

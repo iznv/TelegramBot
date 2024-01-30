@@ -20,3 +20,13 @@ public extension Message {
     }
     
 }
+
+// MARK: - Extensions
+
+public extension Message.Entity {
+    
+    var range: ClosedRange<Int> {
+        return offset...(offset + length - 1)
+    }
+
+}
