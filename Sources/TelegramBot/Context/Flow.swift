@@ -15,14 +15,18 @@ open class Flow {
     
     public var application: Application
     
+    public var telegramBot: TelegramBot
+    
     public weak var chatContext: ChatContext!
     
     // MARK: - Init
     
     public init(application: Application,
+                telegramBot: TelegramBot,
                 chatContext: ChatContext?) {
         
         self.application = application
+        self.telegramBot = telegramBot
         self.chatContext = chatContext
     }
     
@@ -39,10 +43,6 @@ open class Flow {
 }
 
 public extension Flow {
-    
-    var telegramBot: TelegramBot {
-        return application.telegramBot
-    }
     
     func finish() {
         telegramBot.context.finishFlow(for: chatContext.chatId)

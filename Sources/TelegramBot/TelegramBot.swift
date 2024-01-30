@@ -9,9 +9,24 @@ import Vapor
 
 public struct TelegramBot {
     
+    // MARK: - Properties
+    
     let application: Application
 
     let client: Client
+    
+    let token: String
+    
+    // MARK: - Init
+    
+    public init(application: Application, 
+                client: Client,
+                token: String) {
+        
+        self.application = application
+        self.client = client
+        self.token = token
+    }
 
 }
 
@@ -29,7 +44,7 @@ public extension TelegramBot {
     
     @discardableResult
     func make<Response: Content>(_ request: Request<Response>) async throws -> Response {
-        let uri = telegramApiUri(path: "/bot\(configuration.token)/\(request.path)")
+        let uri = telegramApiUri(path: "/bot\(token)/\(request.path)")
         
         try? application.logger.log(title: "Request",
                                     path: "/\(request.path)",
@@ -45,29 +60,9 @@ public extension TelegramBot {
     }
     
     func downloadUri(filePath: String) -> URI {
-        return telegramApiUri(path: "/file/bot\(configuration.token)/\(filePath)")
+        return telegramApiUri(path: "/file/bot\(token)/\(filePath)")
     }
     
-}
-
-// MARK: - Extensions
-
-public extension Application {
-    
-    var telegramBot: TelegramBot {
-        .init(application: self,
-              client: client)
-    }
-
-}
-
-public extension Request {
-    
-    var telegramBot: TelegramBot {
-        .init(application: application,
-              client: client)
-    }
-
 }
 
 // MARK: - Private
