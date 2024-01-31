@@ -29,6 +29,11 @@ public class ChatContext {
 
 public extension ChatContext {
     
+    var isBusy: Bool {
+        guard let flow = flow else { return false }
+        return flow.isBusy
+    }
+    
     func start(_ flow: Flow) async throws {
         self.flow = flow
         try await flow.start()

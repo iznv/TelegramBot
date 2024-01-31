@@ -58,11 +58,9 @@ public extension TelegramBot {
         
         let clientResponse = try await client.post(uri, content: request.parameters)
         
-        if isLogEnabled {
-            try? application.logger.log(title: "Response",
-                                        path: "/\(request.path)",
-                                        data: clientResponse.body)
-        }
+        try? application.logger.log(title: "Response",
+                                    path: "/\(request.path)",
+                                    data: clientResponse.body)
             
         return try clientResponse.content.decode(Response.self)
     }

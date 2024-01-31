@@ -31,7 +31,7 @@ public extension Logger {
 
 // MARK: - Private
 
-private extension ByteBuffer {
+public extension ByteBuffer {
     
     func prettyJson() throws -> String? {
         let jsonObject = try JSONSerialization.jsonObject(with: self)

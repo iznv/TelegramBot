@@ -9,7 +9,7 @@ import Vapor
 
 public struct Sticker: Content {
     
-    public let setName: String
+    public let setName: String?
     
     public let fileId: String
     

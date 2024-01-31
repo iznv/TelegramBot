@@ -13,6 +13,8 @@ open class Flow {
     
     public let id = UUID().uuidString
     
+    public var isBusy: Bool = false
+    
     public var application: Application
     
     public var telegramBot: TelegramBot
