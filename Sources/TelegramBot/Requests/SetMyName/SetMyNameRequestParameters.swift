@@ -13,12 +13,12 @@ public struct SetMyNameRequestParameters: Content {
     
     public let name: String
     
-    public let languageCode: String
+    public let languageCode: String?
     
     // MARK: - Init
     
     public init(name: String,
-                languageCode: String) {
+                languageCode: String? = nil) {
         
         self.name = name
         self.languageCode = languageCode

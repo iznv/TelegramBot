@@ -13,12 +13,12 @@ public struct SetMyDescriptionRequestParameters: Content {
     
     public let description: String
     
-    public let languageCode: String
+    public let languageCode: String?
     
     // MARK: - Init
     
     public init(description: String,
-                languageCode: String) {
+                languageCode: String? = nil) {
         
         self.description = description
         self.languageCode = languageCode
