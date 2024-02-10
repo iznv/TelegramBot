@@ -17,6 +17,26 @@ public extension Message {
         
         public let type: Type
         
+        public let customEmojiId: String?
+        
+    }
+    
+}
+
+// MARK: - CodingKeys
+
+extension Message.Entity {
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case offset
+        
+        case length
+        
+        case type
+        
+        case customEmojiId = "custom_emoji_id"
+        
     }
     
 }
