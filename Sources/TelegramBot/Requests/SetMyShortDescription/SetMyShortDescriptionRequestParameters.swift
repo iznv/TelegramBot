@@ -11,13 +11,13 @@ public struct SetMyShortDescriptionRequestParameters: Content {
     
     // MARK: - Properties
     
-    public let shortDescription: String
+    public let shortDescription: String?
     
     public let languageCode: String?
     
     // MARK: - Init
     
-    public init(shortDescription: String,
+    public init(shortDescription: String?,
                 languageCode: String? = nil) {
         
         self.shortDescription = shortDescription

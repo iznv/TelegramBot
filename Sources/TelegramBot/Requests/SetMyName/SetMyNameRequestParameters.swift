@@ -11,13 +11,13 @@ public struct SetMyNameRequestParameters: Content {
     
     // MARK: - Properties
     
-    public let name: String
+    public let name: String?
     
     public let languageCode: String?
     
     // MARK: - Init
     
-    public init(name: String,
+    public init(name: String?,
                 languageCode: String? = nil) {
         
         self.name = name
