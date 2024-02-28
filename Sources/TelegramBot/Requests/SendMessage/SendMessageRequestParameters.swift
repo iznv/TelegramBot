@@ -19,17 +19,21 @@ public struct SendMessageRequestParameters: Content {
     
     public let replyMarkup: ReplyMarkup?
     
+    public let linkPreviewOptions: LinkPreviewOptions?
+    
     // MARK: - Init
     
     public init(chatId: Int, 
                 text: String,
                 parseMode: ParseMode? = nil,
-                replyMarkup: ReplyMarkup? = nil) {
+                replyMarkup: ReplyMarkup? = nil,
+                linkPreviewOptions: LinkPreviewOptions? = nil) {
         
         self.chatId = chatId
         self.text = text
         self.parseMode = parseMode
         self.replyMarkup = replyMarkup
+        self.linkPreviewOptions = linkPreviewOptions
     }
     
 }
@@ -47,6 +51,8 @@ extension SendMessageRequestParameters {
         case parseMode = "parse_mode"
         
         case replyMarkup = "reply_markup"
+        
+        case linkPreviewOptions = "link_preview_options"
         
     }
     
