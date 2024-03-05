@@ -34,7 +34,7 @@ open class Flow {
     
     // MARK: - To Override
     
-    open func start() async throws { }
+    open func start(req: Request) async throws { }
     
     open func handleCallback(req: Request, 
                              update: Update) async throws -> Bool {

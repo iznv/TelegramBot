@@ -19,6 +19,8 @@ public struct Sticker: Content {
     
     public let isVideo: Bool
     
+    public let emoji: String
+    
 }
 
 // MARK: - CodingKeys
@@ -36,6 +38,8 @@ extension Sticker {
         case isAnimated = "is_animated"
         
         case isVideo = "is_video"
+        
+        case emoji
         
     }
     

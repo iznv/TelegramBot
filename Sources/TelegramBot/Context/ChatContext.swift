@@ -34,9 +34,11 @@ public extension ChatContext {
         return flow.isBusy
     }
     
-    func start(_ flow: Flow) async throws {
+    func start(_ flow: Flow,
+               req: Request) async throws {
+        
         self.flow = flow
-        try await flow.start()
+        try await flow.start(req: req)
     }
     
     func handleCallback(req: Request,
