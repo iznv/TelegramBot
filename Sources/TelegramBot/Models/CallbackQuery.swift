@@ -13,6 +13,8 @@ public struct CallbackQuery: Content {
     
     public let message: Message?
     
+    public let from: User
+    
     public let data: String?
     
 }

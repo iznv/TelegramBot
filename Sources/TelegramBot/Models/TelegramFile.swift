@@ -9,7 +9,9 @@ import Vapor
 
 public struct TelegramFile: Content {
     
-    public let filePath: String
+    public let fileId: String
+    
+    public let filePath: String?
     
 }
 
@@ -19,6 +21,8 @@ public struct TelegramFile: Content {
 extension TelegramFile {
     
     enum CodingKeys: String, CodingKey {
+        
+        case fileId = "file_id"
         
         case filePath = "file_path"
         

@@ -19,7 +19,7 @@ public struct Sticker: Content {
     
     public let isVideo: Bool
     
-    public let emoji: String
+    public let emoji: String?
     
 }
 
