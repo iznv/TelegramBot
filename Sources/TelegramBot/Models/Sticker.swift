@@ -21,6 +21,8 @@ public struct Sticker: Content {
     
     public let emoji: String?
     
+    public let type: StickerType
+    
 }
 
 // MARK: - CodingKeys
@@ -40,6 +42,8 @@ extension Sticker {
         case isVideo = "is_video"
         
         case emoji
+        
+        case type
         
     }
     
