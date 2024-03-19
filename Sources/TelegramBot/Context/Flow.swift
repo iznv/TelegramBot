@@ -36,6 +36,8 @@ open class Flow {
     
     open func start(req: Request) async throws { }
     
+    open func prepareToFinish() async { }
+    
     open func handleCallback(req: Request, 
                              update: Update) async throws -> Bool {
         
@@ -46,8 +48,9 @@ open class Flow {
 
 public extension Flow {
     
-    func finish() {
-        telegramBot.context.finishFlow(for: chatContext.chatId)
+    func finish(shouldPrepare: Bool = false) {
+        telegramBot.context.finishFlow(for: chatContext.chatId,
+                                       shouldPrepare: shouldPrepare)
     }
     
 }

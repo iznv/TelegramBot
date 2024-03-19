@@ -29,9 +29,18 @@ public extension Context {
         }
     }
     
-    func finishFlow(for chatId: Int) {
+    func finishFlow(for chatId: Int,
+                    shouldPrepare: Bool = true) {
+        
         let context = getChatContext(id: chatId)
-        context.flow = nil
+        
+        Task {
+            if shouldPrepare {
+                await context.flow?.prepareToFinish()
+            }
+            
+            context.flow = nil
+        }
     }
     
 }
