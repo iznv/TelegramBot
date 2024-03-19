@@ -16,16 +16,20 @@ public struct EditMessageTextRequestParameters: Content {
     public let messageId: Int
     
     public let text: String
+
+    public let replyMarkup: ReplyMarkup?
     
     // MARK: - Init
     
     public init(chatId: Int,
                 messageId: Int,
-                text: String) {
+                text: String,
+                replyMarkup: ReplyMarkup? = nil) {
         
         self.chatId = chatId
         self.messageId = messageId
         self.text = text
+        self.replyMarkup = replyMarkup
     }
     
 }
@@ -41,6 +45,8 @@ extension EditMessageTextRequestParameters {
         case messageId = "message_id"
         
         case text
+        
+        case replyMarkup = "reply_markup"
         
     }
     
