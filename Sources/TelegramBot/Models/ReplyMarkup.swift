@@ -32,7 +32,7 @@ extension ReplyMarkup: Content {
         var container = encoder.singleValueContainer()
         switch self {
         case let .inlineKeyboardMarkup(inlineKeyboardMarkup):
-            try container.encode(inlineKeyboardMarkup)
+            try container.encode(try inlineKeyboardMarkup.json())
         default:
             fatalError("Unknown should not be used")
         }

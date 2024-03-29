@@ -15,13 +15,17 @@ public struct InlineKeyboardButton: Content {
     
     public let callbackData: String?
     
+    public let url: String?
+    
     // MARK: - Init
     
     public init(text: String,
-                callbackData: String? = nil) {
+                callbackData: String? = nil,
+                url: String? = nil) {
         
         self.text = text
         self.callbackData = callbackData
+        self.url = url
     }
     
 }
@@ -35,6 +39,8 @@ extension InlineKeyboardButton {
         case text
         
         case callbackData = "callback_data"
+        
+        case url
         
     }
     

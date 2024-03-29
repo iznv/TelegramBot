@@ -15,6 +15,8 @@ public class ChatContext {
     
     public var languageCode: String?
     
+    public var properties: Any?
+    
     var flow: (Flow)?
     
     // MARK: - Init
