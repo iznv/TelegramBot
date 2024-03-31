@@ -19,8 +19,6 @@ public struct CreateNewStickerSetRequestParameters: Content {
     
     public let stickers: [InputSticker]
     
-    public let stickerFormat: StickerFormat
-    
     public let stickerType: StickerType?
     
     // MARK: - Init
@@ -29,14 +27,12 @@ public struct CreateNewStickerSetRequestParameters: Content {
                 name: String,
                 title: String,
                 stickers: [InputSticker],
-                stickerFormat: StickerFormat,
                 stickerType: StickerType?) {
         
         self.userId = userId
         self.name = name
         self.title = title
         self.stickers = stickers
-        self.stickerFormat = stickerFormat
         self.stickerType = stickerType
     }
     
@@ -55,8 +51,6 @@ extension CreateNewStickerSetRequestParameters {
         case title
         
         case stickers
-        
-        case stickerFormat = "sticker_format"
         
         case stickerType = "sticker_type"
         

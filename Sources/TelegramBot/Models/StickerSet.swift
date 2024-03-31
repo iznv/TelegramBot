@@ -15,10 +15,6 @@ public struct StickerSet: Content {
     
     public let stickerType: StickerType
     
-    public let isAnimated: Bool
-    
-    public let isVideo: Bool
-    
     public let stickers: [Sticker]
     
 }
@@ -34,13 +30,21 @@ extension StickerSet {
         case title
         
         case stickerType = "sticker_type"
-        
-        case isAnimated = "is_animated"
-        
-        case isVideo = "is_video"
     
         case stickers
         
+    }
+    
+}
+
+extension StickerSet {
+    
+    public var isAnimated: Bool {
+        return stickers.first?.isAnimated ?? false
+    }
+    
+    public var isVideo: Bool {
+        return stickers.first?.isVideo ?? false
     }
     
 }
