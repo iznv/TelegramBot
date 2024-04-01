@@ -37,14 +37,21 @@ extension StickerSet {
     
 }
 
-extension StickerSet {
+// MARK: - Extensions
+
+public extension StickerSet {
     
-    public var isAnimated: Bool {
+    var isAnimated: Bool {
         return stickers.first?.isAnimated ?? false
     }
     
-    public var isVideo: Bool {
+    var isVideo: Bool {
         return stickers.first?.isVideo ?? false
+    }
+    
+    var isMixedFormat: Bool {
+        let formats = Set(stickers.map { $0.format })
+        return formats.count > 1
     }
     
 }

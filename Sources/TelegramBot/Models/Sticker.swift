@@ -48,3 +48,19 @@ extension Sticker {
     }
     
 }
+
+// MARK: - Extension
+
+public extension Sticker {
+    
+    var format: StickerFormat {
+        if isVideo {
+            return .video
+        } else if isAnimated {
+            return .animated
+        } else {
+            return .static
+        }
+    }
+    
+}
