@@ -58,7 +58,11 @@ extension Message {
 public extension Message {
     
     func text(for entity: Entity) -> String? {
-        return text?.substring(with: entity.range)
+        guard let text = text else { return nil }
+        let range = entity.range
+        guard range.upperBound < text.count else { return nil }
+        
+        return text.substring(with: range)
     }
     
 }
