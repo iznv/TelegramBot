@@ -11,7 +11,7 @@ public struct InputSticker: Content {
     
     // MARK: - Properties
     
-    public let sticker: Document
+    public let sticker: InputFile
     
     public let emojiList: [String]
     
@@ -19,7 +19,7 @@ public struct InputSticker: Content {
     
     // MARK: - Init
     
-    public init(sticker: Document,
+    public init(sticker: InputFile,
                 emojiList: [String],
                 format: StickerFormat) {
         

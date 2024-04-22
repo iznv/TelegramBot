@@ -21,19 +21,23 @@ public struct CreateNewStickerSetRequestParameters: Content {
     
     public let stickerType: StickerType?
     
+    public let needsRepainting: Bool?
+    
     // MARK: - Init
     
     public init(userId: Int, 
                 name: String,
                 title: String,
                 stickers: [InputSticker],
-                stickerType: StickerType?) {
+                stickerType: StickerType?,
+                needsRepainting: Bool? = nil) {
         
         self.userId = userId
         self.name = name
         self.title = title
         self.stickers = stickers
         self.stickerType = stickerType
+        self.needsRepainting = needsRepainting
     }
     
 }
@@ -53,6 +57,8 @@ extension CreateNewStickerSetRequestParameters {
         case stickers
         
         case stickerType = "sticker_type"
+        
+        case needsRepainting = "needs_repainting"
         
     }
     

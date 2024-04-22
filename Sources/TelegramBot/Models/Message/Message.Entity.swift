@@ -11,6 +11,8 @@ public extension Message {
     
     struct Entity: Content {
         
+        // MARK: - Properties
+        
         public let offset: Int
         
         public let length: Int
@@ -18,6 +20,19 @@ public extension Message {
         public let type: Type
         
         public let customEmojiId: String?
+        
+        // MARK: - Init
+        
+        public init(offset: Int, 
+                    length: Int,
+                    type: Type,
+                    customEmojiId: String? = nil) {
+            
+            self.offset = offset
+            self.length = length
+            self.type = type
+            self.customEmojiId = customEmojiId
+        }
         
     }
     

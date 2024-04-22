@@ -1,50 +1,38 @@
 //
 //  Document.swift
-//  
 //
-//  Created by Ivan Zinovev on 30.01.2024.
+//
+//  Created by Ivan Zinovev on 15.04.2024.
 //
 
 import Vapor
 
-public enum Document {
+public struct Document: Content {
     
-    case file(File)
+    public let fileId: String
     
-    case fileId(String)
+    public let fileUniqueId: String
     
-    case unknown
+    public let fileName: String?
+    
+    public let mimeType: String?
     
 }
 
-// MARK: - Content
+// MARK: - CodingKeys
 
-extension Document: Content {
- 
-    public init(from decoder: Decoder) throws {
-        if let file = try? decoder.singleValueContainer().decode(File.self) {
-            self = .file(file)
-            return
-        }
-        
-        if let fileId = try? decoder.singleValueContainer().decode(String.self) {
-            self = .fileId(fileId)
-            return
-        }
-        
-        self = .unknown
-    }
+extension Document {
     
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case let .file(file):
-            try container.encode(file)
-        case let .fileId(fileId):
-            try container.encode(fileId)
-        default:
-            fatalError("Unknown should not be used")
-        }
+    enum CodingKeys: String, CodingKey {
+        
+        case fileId = "file_id"
+        
+        case fileUniqueId = "file_unique_id"
+        
+        case fileName = "file_name"
+        
+        case mimeType = "mime_type"
+        
     }
     
 }

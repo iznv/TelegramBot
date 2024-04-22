@@ -15,23 +15,27 @@ public struct SendDocumentRequestParameters: Content {
     
     public let chatId: Int
     
-    public let document: Document
+    public let document: InputFile
     
     public let disableContentTypeDetection: Bool
     
     public let caption: String?
     
+    public let captionEntities: [Message.Entity]?
+    
     // MARK: - Init
     
     public init(chatId: Int,
-                document: Document,
+                document: InputFile,
                 disableContentTypeDetection: Bool = true,
-                caption: String? = nil) {
+                caption: String? = nil,
+                captionEntities: [Message.Entity]? = nil) {
         
         self.chatId = chatId
         self.document = document
         self.disableContentTypeDetection = disableContentTypeDetection
         self.caption = caption
+        self.captionEntities = captionEntities
     }
     
 }
@@ -49,6 +53,8 @@ extension SendDocumentRequestParameters {
         case disableContentTypeDetection = "disable_content_type_detection"
         
         case caption
+        
+        case captionEntities = "caption_entities"
         
     }
     
