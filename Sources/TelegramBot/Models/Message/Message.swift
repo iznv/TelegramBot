@@ -25,6 +25,8 @@ public struct Message: Content {
     
     public let document: Document?
     
+    public let dice: Dice?
+    
 }
 
 // MARK: - CodingKeys
@@ -48,6 +50,8 @@ extension Message {
         case entities
         
         case document
+        
+        case dice
         
     }
     
