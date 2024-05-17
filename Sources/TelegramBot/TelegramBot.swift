@@ -17,19 +17,23 @@ public struct TelegramBot {
     
     let token: String
     
-    let isLogEnabled: Bool
+    let isRequestLogEnabled: Bool
+    
+    let isResponseLogEnabled: Bool
     
     // MARK: - Init
     
     public init(application: Application, 
                 client: Client,
                 token: String,
-                isLogEnabled: Bool = false) {
+                isRequestLogEnabled: Bool = false,
+                isResponseLogEnabled: Bool = false) {
         
         self.application = application
         self.client = client
         self.token = token
-        self.isLogEnabled = isLogEnabled
+        self.isRequestLogEnabled = isRequestLogEnabled
+        self.isResponseLogEnabled = isResponseLogEnabled
     }
 
 }
@@ -50,7 +54,7 @@ public extension TelegramBot {
     func make<Response: Content>(_ request: Request<Response>) async throws -> Response {
         let uri = telegramApiUri(path: "/bot\(token)/\(request.path)")
         
-        if isLogEnabled {
+        if isRequestLogEnabled {
             try? application.logger.log(title: "Request",
                                         path: "/\(request.path)",
                                         content: request.parameters)
@@ -58,9 +62,11 @@ public extension TelegramBot {
         
         let clientResponse = try await client.post(uri, content: request.parameters)
         
-        try? application.logger.log(title: "Response",
-                                    path: "/\(request.path)",
-                                    data: clientResponse.body)
+        if isResponseLogEnabled {
+            try? application.logger.log(title: "Response",
+                                        path: "/\(request.path)",
+                                        data: clientResponse.body)
+        }
             
         return try clientResponse.content.decode(Response.self)
     }
