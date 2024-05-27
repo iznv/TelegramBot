@@ -25,6 +25,8 @@ public struct Sticker: Content {
     
     public let customEmojiId: String?
     
+    public let needsRepainting: Bool?
+    
 }
 
 // MARK: - CodingKeys
@@ -48,6 +50,8 @@ extension Sticker {
         case type
         
         case customEmojiId = "custom_emoji_id"
+        
+        case needsRepainting = "needs_repainting"
         
     }
     

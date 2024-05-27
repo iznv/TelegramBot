@@ -54,4 +54,8 @@ public extension StickerSet {
         return formats.count > 1
     }
     
+    var needsRepainting: Bool {
+        return stickers.reduce(true) { $0 && $1.needsRepainting == true }
+    }
+    
 }
