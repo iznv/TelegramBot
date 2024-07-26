@@ -15,6 +15,12 @@ public struct TelegramBot {
 
     let client: Client
     
+    let scheme: String
+    
+    let host: String
+    
+    let port: Int?
+    
     let token: String
     
     let isRequestLogEnabled: Bool
@@ -25,12 +31,18 @@ public struct TelegramBot {
     
     public init(application: Application, 
                 client: Client,
+                scheme: String,
+                host: String,
+                port: Int? = nil,
                 token: String,
                 isRequestLogEnabled: Bool = false,
                 isResponseLogEnabled: Bool = false) {
         
         self.application = application
         self.client = client
+        self.scheme = scheme
+        self.host = host
+        self.port = port
         self.token = token
         self.isRequestLogEnabled = isRequestLogEnabled
         self.isResponseLogEnabled = isResponseLogEnabled
@@ -82,8 +94,9 @@ public extension TelegramBot {
 private extension TelegramBot {
     
     func telegramApiUri(path: String) -> URI {
-        return URI(scheme: "https",
-                   host: "api.telegram.org",
+        return URI(scheme: scheme,
+                   host: host,
+                   port: port,
                    path: path)
     }
     
