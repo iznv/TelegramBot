@@ -19,6 +19,10 @@ public class Context {
 
 public extension Context {
     
+    func isChatContextExists(id: Int) -> Bool {
+        return chatContexts[id] != nil
+    }
+    
     func getChatContext(id: Int) -> ChatContext {
         if let chatContext = chatContexts[id] {
             return chatContext
