@@ -26,6 +26,10 @@ public struct Message: Content {
     public let document: Document?
     
     public let dice: Dice?
+
+    public let successfulPayment: SuccessfulPayment?
+    
+    public let refundedPayment: RefundedPayment?
     
 }
 
@@ -52,6 +56,10 @@ extension Message {
         case document
         
         case dice
+
+        case successfulPayment = "successful_payment"
+        
+        case refundedPayment = "refunded_payment"
         
     }
     
