@@ -17,6 +17,8 @@ public struct ChatFullInfo: Content {
     
     public let username: String?
     
+    public let hasRestrictedVoiceAndVideoMessages: Bool?
+    
 }
 
 // MARK: - CodingKeys
@@ -32,6 +34,8 @@ extension ChatFullInfo {
         case lastName = "last_name"
         
         case username
+        
+        case hasRestrictedVoiceAndVideoMessages = "has_restricted_voice_and_video_messages"
         
     }
     

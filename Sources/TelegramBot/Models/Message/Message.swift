@@ -23,6 +23,8 @@ public struct Message: Content {
     
     public let entities: [Entity]?
     
+    public let video: Video?
+    
     public let document: Document?
     
     public let dice: Dice?
@@ -52,6 +54,8 @@ extension Message {
         case sticker
         
         case entities
+        
+        case video
         
         case document
         

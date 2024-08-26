@@ -1,13 +1,13 @@
 //
-//  Document.swift
+//  Video.swift
 //
 //
-//  Created by Ivan Zinovev on 15.04.2024.
+//  Created by Ivan Zinovev on 15.08.2024.
 //
 
 import Vapor
 
-public struct Document: Content {
+public struct Video: Content {
     
     public let fileId: String
     
@@ -17,13 +17,15 @@ public struct Document: Content {
     
     public let mimeType: String?
     
+    public let duration: Int
+    
     public let fileSize: Int?
     
 }
 
 // MARK: - CodingKeys
 
-extension Document {
+extension Video {
     
     enum CodingKeys: String, CodingKey {
         
@@ -34,7 +36,9 @@ extension Document {
         case fileName = "file_name"
         
         case mimeType = "mime_type"
-     
+        
+        case duration
+        
         case fileSize = "file_size"
         
     }
