@@ -17,7 +17,7 @@ public class ChatContext {
     
     public var properties: Any?
     
-    var flow: (Flow)?
+    public var flow: (Flow)?
     
     // MARK: - Init
     
