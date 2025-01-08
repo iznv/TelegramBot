@@ -17,6 +17,8 @@ public struct Update: Content {
     
     public let preCheckoutQuery: PreCheckoutQuery?
     
+    public let myChatMember: ChatMemberUpdated?
+    
 }
 
 // MARK: - CodingKeys
@@ -32,6 +34,8 @@ extension Update {
         case callbackQuery = "callback_query"
         
         case preCheckoutQuery = "pre_checkout_query"
+        
+        case myChatMember = "my_chat_member"
         
     }
     
