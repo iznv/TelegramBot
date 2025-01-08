@@ -19,6 +19,8 @@ public struct SuccessfulPayment: Content {
     
     public let providerPaymentChargeId: String
     
+    public let subscriptionExpirationDate: Int?
+    
 }
 
 // MARK: - CodingKeys
@@ -36,6 +38,8 @@ extension SuccessfulPayment {
         case telegramPaymentChargeId = "telegram_payment_charge_id"
         
         case providerPaymentChargeId = "provider_payment_charge_id"
+        
+        case subscriptionExpirationDate = "subscription_expiration_date"
         
     }
     
