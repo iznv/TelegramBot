@@ -21,6 +21,10 @@ public struct SuccessfulPayment: Content {
     
     public let subscriptionExpirationDate: Int?
     
+    public let isRecurring: Bool?
+    
+    public let isFirstRecurring: Bool?
+    
 }
 
 // MARK: - CodingKeys
@@ -40,6 +44,10 @@ extension SuccessfulPayment {
         case providerPaymentChargeId = "provider_payment_charge_id"
         
         case subscriptionExpirationDate = "subscription_expiration_date"
+        
+        case isRecurring = "is_recurring"
+        
+        case isFirstRecurring = "is_first_recurring"
         
     }
     
