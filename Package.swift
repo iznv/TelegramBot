@@ -12,7 +12,7 @@ let package = Package(
                  targets: ["TelegramBot"])
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.89.0"),
+        .package(url: "https://github.com/vapor/vapor.git", from: "4.121.0"),
     ],
     targets: [
         .target(
